@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use finfo;
+use Illuminate\Database\Eloquent\Model;
 use Respect\Validation\Rules\Key;
 
 interface StaticValidator
@@ -371,4 +372,6 @@ interface StaticValidator
     public static function xdigit(string ...$additionalChars): ChainedValidator;
 
     public static function yes(bool $useLocale = false): ChainedValidator;
+
+    public static function tableUnique(string|Model $model, string|int |null $id = null, string $field = 'name'): ChainedValidator;
 }

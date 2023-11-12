@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use finfo;
+use Illuminate\Database\Eloquent\Model;
 use Respect\Validation\Rules\Key;
 
 interface ChainedValidator extends Validatable
@@ -31,9 +32,9 @@ interface ChainedValidator extends Validatable
     public function arrayVal(): ChainedValidator;
 
     public function attribute(
-        string $reference,
+        string       $reference,
         ?Validatable $validator = null,
-        bool $mandatory = true
+        bool         $mandatory = true
     ): ChainedValidator;
 
     public function base(int $base, ?string $chars = null): ChainedValidator;
@@ -188,15 +189,15 @@ interface ChainedValidator extends Validatable
     public function json(): ChainedValidator;
 
     public function key(
-        string $reference,
+        string       $reference,
         ?Validatable $referenceValidator = null,
-        bool $mandatory = true
+        bool         $mandatory = true
     ): ChainedValidator;
 
     public function keyNested(
-        string $reference,
+        string       $reference,
         ?Validatable $referenceValidator = null,
-        bool $mandatory = true
+        bool         $mandatory = true
     ): ChainedValidator;
 
     public function keySet(Key ...$rule): ChainedValidator;
@@ -373,4 +374,6 @@ interface ChainedValidator extends Validatable
     public function xdigit(string ...$additionalChars): ChainedValidator;
 
     public function yes(bool $useLocale = false): ChainedValidator;
+
+    public function tableUnique(string|Model $model, string|int|null $id = null, string $field = 'name'): ChainedValidator;
 }
