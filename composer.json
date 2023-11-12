@@ -1,5 +1,5 @@
 {
-    "name": "workerman/validation",
+    "name": "chenkby/validation",
     "description": "The most awesome validation engine ever created for PHP. Respect/Validation 汉化版本",
     "keywords": ["respect", "validation", "validator"],
     "type": "library",
